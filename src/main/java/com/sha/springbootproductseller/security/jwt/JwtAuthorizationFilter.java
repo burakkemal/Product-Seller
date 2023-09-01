@@ -7,16 +7,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
+    @Autowired
     private JwtProvider jwtProvider;
 
     @Override

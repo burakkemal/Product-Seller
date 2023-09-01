@@ -2,12 +2,11 @@ package com.sha.springbootproductseller.model;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+
+
 import java.time.LocalDateTime;
 
 
@@ -23,7 +22,7 @@ public class User {
     @Column(name = "username", unique = true,nullable = false,length = 100)
     private String userName;
 
-    @Column(name = "passowrd", nullable = false )
+    @Column(name = "password", nullable = false )
     private String password;
 
     @Column(name = "name",nullable = false)
@@ -35,4 +34,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "role",nullable = false)
     private Role role;
+
+    @Transient
+    private String token;
 }

@@ -24,8 +24,8 @@ public class Product {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "desciption", nullable = false)
-    private String desciption;
+    @Column(name = "description", nullable = false)
+    private String description;
 
     @Column(name = "create_time", nullable = false)
     private LocalDateTime createTime;

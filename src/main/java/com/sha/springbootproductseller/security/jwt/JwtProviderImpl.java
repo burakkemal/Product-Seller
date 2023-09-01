@@ -23,25 +23,29 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
+
 public class JwtProviderImpl implements JwtProvider{
 
     @Value("${app.jwt.secret}")
     private String JWT_SECRET;
 
     @Value("${app.jwt.expiration-in-ms}")
-    private String JWT_EXPIRATION_IN_MS;
+    private Long JWT_EXPIRATION_IN_MS;
 
     @Override
-    public String generateToken(UserPrinciple auth){
-        String authorities=auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(","));
+    public String generateToken(UserPrinciple auth)
+    {
+        String authorities = auth.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
 
-        Key key= Keys.hmacShaKeyFor(JWT_SECRET.getBytes(StandardCharsets.UTF_8));
+        Key key = Keys.hmacShaKeyFor(JWT_SECRET.getBytes(StandardCharsets.UTF_8));
 
         return Jwts.builder()
                 .setSubject(auth.getUsername())
-                .claim("roles",authorities)
-                .claim("userId",auth.getId())
-                .setExpiration(new Date(System.currentTimeMillis()+JWT_EXPIRATION_IN_MS))
+                .claim("roles", authorities)
+                .claim("userId", auth.getId())
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_EXPIRATION_IN_MS))
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
     }

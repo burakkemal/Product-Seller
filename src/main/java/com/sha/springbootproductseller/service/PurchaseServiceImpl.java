@@ -21,7 +21,7 @@ public class PurchaseServiceImpl implements PurchaseService{
     }
 
     @Override
-    public List<PurchaseItem> purchaseItems(Long userId){
+    public List<PurchaseItem> findAllPurchaseOfUser(Long userId){
         return purchaseRepository.findAllPurchaseOfUser(userId);
     }
 }

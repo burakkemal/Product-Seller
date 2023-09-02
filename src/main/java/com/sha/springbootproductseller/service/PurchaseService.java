@@ -8,5 +8,5 @@ import java.util.List;
 public interface PurchaseService {
     Purchase savePurchase(Purchase purchase);
 
-    List<PurchaseItem> purchaseItems(Long userId);
+    List<PurchaseItem> findAllPurchaseOfUser(Long userId);
 }

@@ -57,6 +57,10 @@ public class SecurityConfig {
                 .requestMatchers("/api/authentication/**").permitAll()
                 .requestMatchers(HttpMethod.GET,"/api/product").permitAll()
                 .requestMatchers(HttpMethod.POST,"/api/product/**").hasRole(Role.ADMIN.name())
+                .requestMatchers(HttpMethod.OPTIONS,"api/product/**").permitAll()
+                .requestMatchers(HttpMethod.OPTIONS,"api/purchase/**").permitAll()
+                .requestMatchers(HttpMethod.POST,"api/purchase/**").permitAll()
+                .requestMatchers(HttpMethod.DELETE,"/**").permitAll()
                 .anyRequest().authenticated());
         http.addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();

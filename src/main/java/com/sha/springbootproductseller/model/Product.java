@@ -30,7 +30,7 @@ public class Product {
     @Column(name = "create_time", nullable = false)
     private LocalDateTime createTime;
 
-    @OneToMany(mappedBy = "product",fetch = FetchType.LAZY)
-    List<Purchase> purchaseList;
+    //@OneToMany(mappedBy = "product",fetch = FetchType.LAZY)
+   // List<Purchase> purchaseList;
 
 }
